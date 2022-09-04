@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+}
+
+.calculator{
+    width: 50%;
+    max-width: 500px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: burlywood;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.display-result{
+    margin-bottom: 1em;
+    font-size: 2rem;
+}
+
+.calc-buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
