@@ -41,3 +41,14 @@ const operate = (num1,operator,num2) => {
             break;
     }
 }
+
+const numBtns = document.querySelector('.calc-buttons');
+const displayResult = document.querySelector('.display-result');
+
+numBtns.addEventListener('click', e => {
+
+    if(e.target.hasAttribute('data-num')){
+        displayResult.value += e.target.getAttribute('data-num');
+    }
+    
+});
