@@ -42,13 +42,76 @@ const operate = (num1,operator,num2) => {
     }
 }
 
-const numBtns = document.querySelector('.calc-buttons');
+const displayOperation = document.querySelector('.display-operation');
 const displayResult = document.querySelector('.display-result');
+const numBtns = document.querySelector('.calc-buttons');
+
+let value1 = '';
+let value2 = '';
+let operator = '';
+let result;
+let clear = false;
+
 
 numBtns.addEventListener('click', e => {
 
+    
     if(e.target.hasAttribute('data-num')){
+
+        if(clear){
+            displayResult.value = '';
+            clear = false;
+        }
+
         displayResult.value += e.target.getAttribute('data-num');
+
+        if(value1 && operator){
+            value2 = displayResult.value;
+        }
+        else value1 = displayResult.value;
+
+    }
+
+    if(e.target.hasAttribute('data-operator')){
+
+        if(value1, operator, value2){
+
+            result = operate(value1, operator, value2);
+
+            displayResult.value = result;
+            value1 = result;
+            value2 = '';
+            operator = e.target.getAttribute('data-operator');
+            clear = true;
+            
+        }
+
+        else if(value1){
+            operator = e.target.getAttribute('data-operator');
+            clear = true;
+        }
+
+        displayOperation.value = `${value1} ${operator} ${value2}`;
+    }
+
+    if(e.target.hasAttribute('data-equal')){
+
+        if(value1, operator, value2){
+            displayOperation.value = `${value1} ${operator} ${value2} =`;
+
+            result = operate(value1, operator, value2);
+
+            displayResult.value = result;
+            value1 = result;
+            value2 = '';
+            operator = '';
+            clear = true;
+            
+            
+        }
     }
     
 });
+
+
+
